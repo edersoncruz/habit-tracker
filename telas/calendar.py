@@ -1,9 +1,9 @@
-from PySide6.QtWidgets import QWidget, QCalendarWidget, QLabel, QPushButton
+from PySide6.QtWidgets import QWidget, QCalendarWidget
 from PySide6.QtCore import QLocale, Qt
-from telas.habbits import HabitsWindow  # ajuste o nome conforme seu projeto
+from PySide6.QtWidgets import QStackedWidget
 
 class CalendarioWidget(QWidget):
-    def __init__(self, main_window, parent=None):
+    def __init__(self, main_window, stack, parent=None):
         super().__init__(parent)
         self.main_window = main_window
         # Exemplo de layout, ajuste conforme necessário
@@ -18,7 +18,8 @@ class CalendarioWidget(QWidget):
         self.calendar.setNavigationBarVisible(True)
         self.calendar.setDateEditEnabled(True)
         self.calendar.setSelectedDate(self.calendar.selectedDate())
-        self.calendar.setStyleSheet("QCalendarWidget { background-color: #f0f0f0; }")
+        self.calendar.setStyleSheet(
+            "QCalendarWidget { background-color: #f0f0f0; }")
         self.v_layout.addWidget(self.calendar, 0, 0, 1, 1)
         self.calendar.setFocusPolicy(Qt.StrongFocus)
         self.calendar.setFocus()
@@ -29,8 +30,8 @@ class CalendarioWidget(QWidget):
         self.calendar.setFirstDayOfWeek(Qt.Monday)
 
         # Abrir nova tela ao clicar em um dia
-        self.calendar.clicked.connect(self.open_new_window)
+        self.calendar.clicked.connect(self.open_new_window, stack)
 
-    def open_new_window(self, date):
-        self.habits_widget = HabitsWindow(self.main_window)
-        self.habits_widget.show()
+    def open_new_window(self, stack):
+        stack.setCurrentIndex(1)
+        self.v_layout.addWidget(stack, 0, 0, 1, 1)

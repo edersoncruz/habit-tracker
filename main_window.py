@@ -1,7 +1,7 @@
-from PySide6.QtWidgets import QMainWindow, QWidget, QGridLayout, QCalendarWidget, QLineEdit
-from PySide6.QtCore import Qt, QLocale
+from PySide6.QtWidgets import QStackedWidget, QMainWindow, QWidget, QGridLayout
 from telas.calendar import CalendarioWidget
-from PySide6.QtGui import QKeyEvent
+from telas.habbits import HabitsWindow
+
 
 class MainWindow(QMainWindow):
     def __init__(self, parent: QWidget | None = None, *args, **kwargs) -> None:
@@ -14,16 +14,26 @@ class MainWindow(QMainWindow):
         self.v_layout.setHorizontalSpacing(0)
         self.v_layout.setContentsMargins(0, 0, 0, 0)
         self.cw.setLayout(self.v_layout)
-
         self.setCentralWidget(self.cw)
 
-        # Titulo da janela
+        # Titulo da janela e tamanho
         self.setWindowTitle('Habit Tracker')
+        self.resize(300, 300)  
+        self.move(500, 100)    
 
-        # Ajustando o tamanho da janela
-        self.resize(300, 300)  # Largura: 400px, Altura: 300px
-        self.move(500, 100)    # Posição na tela: X=100px, Y=100p
+        # Stack para alternar entre telas
+        self.stack = QStackedWidget()
 
-        # Calendário para navegação chama telas/calendar.py
-        self.calendario = CalendarioWidget(self)
-        self.v_layout.addWidget(self.calendario, 0, 0, 1, 1)
+        # criando as telas
+        self.calendario = CalendarioWidget(self, self.stack)
+        self.habbits = HabitsWindow(self, self.stack)
+
+        # Adiciona as páginas no stack
+        self.stack.addWidget(self.calendario)
+        self.stack.addWidget(self.habbits)
+
+        # Inicia com o calendário
+        self.stack.setCurrentIndex(0)
+
+        # Adiciona o stack no layout principal
+        self.v_layout.addWidget(self.stack, 0, 0, 1, 1)
