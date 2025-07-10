@@ -1,13 +1,11 @@
-from PySide6.QtWidgets import QWidget, QCalendarWidget
+from PySide6.QtWidgets import QWidget, QCalendarWidget, QStackedWidget, QGridLayout
 from PySide6.QtCore import QLocale, Qt
-from PySide6.QtWidgets import QStackedWidget
+
 
 class CalendarioWidget(QWidget):
     def __init__(self, main_window, stack, parent=None):
         super().__init__(parent)
         self.main_window = main_window
-        # Exemplo de layout, ajuste conforme necessário
-        from PySide6.QtWidgets import QGridLayout
         self.v_layout = QGridLayout(self)
         
         # Calendário para navegação
@@ -30,8 +28,10 @@ class CalendarioWidget(QWidget):
         self.calendar.setFirstDayOfWeek(Qt.Monday)
 
         # Abrir nova tela ao clicar em um dia
-        self.calendar.clicked.connect(self.open_new_window, stack)
+        self.calendar.clicked.connect(lambda date: self.open_new_window(date, stack))
 
-    def open_new_window(self, stack):
+    def open_new_window(self, date, stack: QStackedWidget):
+        habbits_widget = stack.widget(1)
+        habbits_widget.set_date(date)
         stack.setCurrentIndex(1)
-        self.v_layout.addWidget(stack, 0, 0, 1, 1)
+

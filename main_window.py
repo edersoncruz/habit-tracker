@@ -18,7 +18,7 @@ class MainWindow(QMainWindow):
 
         # Titulo da janela e tamanho
         self.setWindowTitle('Habit Tracker')
-        self.resize(300, 300)  
+        self.resize(400, 300)  
         self.move(500, 100)    
 
         # Stack para alternar entre telas
@@ -37,3 +37,8 @@ class MainWindow(QMainWindow):
 
         # Adiciona o stack no layout principal
         self.v_layout.addWidget(self.stack, 0, 0, 1, 1)
+
+    def closeEvent(self, event):
+        # Salva os hábitos do dia atual antes de fechar
+        self.habbits.save_habits_for_date()
+        super().closeEvent(event)
