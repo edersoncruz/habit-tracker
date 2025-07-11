@@ -1,11 +1,11 @@
 from PySide6.QtWidgets import QWidget, QCalendarWidget, QStackedWidget, QGridLayout
 from PySide6.QtCore import QLocale, Qt
+from telas.habbits import HabitsWindow
 
 
 class CalendarioWidget(QWidget):
-    def __init__(self, main_window, stack, parent=None):
+    def __init__(self, stack, parent=None):
         super().__init__(parent)
-        self.main_window = main_window
         self.v_layout = QGridLayout(self)
         
         # Calendário para navegação
@@ -31,7 +31,7 @@ class CalendarioWidget(QWidget):
         self.calendar.clicked.connect(lambda date: self.open_new_window(date, stack))
 
     def open_new_window(self, date, stack: QStackedWidget):
-        habbits_widget = stack.widget(1)
+        habbits_widget: HabitsWindow = stack.widget(1)
         habbits_widget.set_date(date)
         stack.setCurrentIndex(1)
 

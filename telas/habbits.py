@@ -6,7 +6,9 @@ from PySide6.QtCore import Qt, QLocale
 locale = QLocale(QLocale.Portuguese, QLocale.Brazil)
 QLocale.setDefault(locale)
 
-HABITS_FILE = "habits.json"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+HABITS_FILE = os.path.join(BASE_DIR, "habits.json")
+
 
 class HabitsWindow(QWidget):
     DEFAULT_HABITS = [
@@ -19,13 +21,13 @@ class HabitsWindow(QWidget):
         "Meditar",
     ]
 
-    def __init__(self, main_window, stack, parent=None):
+    def __init__(self, stack, parent=None):
         super().__init__(parent)
-        self.main_window = main_window
         self.stack = stack
         self.current_date_str = None
-
+        self.v_layout = QVBoxLayout(self)
         self.habbits = QVBoxLayout()
+        self.v_layout.addLayout(self.habbits)
         self.checkboxes = {}
 
         # Campo para adicionar hábito
@@ -49,8 +51,6 @@ class HabitsWindow(QWidget):
         button.clicked.connect(self.on_back_to_calendar)
         self.habbits.addWidget(button)
         button.setFixedHeight(30)
-
-        self.setLayout(self.habbits)
 
         # Para exibir a data selecionada
         self.titulo = None

@@ -25,12 +25,12 @@ class MainWindow(QMainWindow):
         self.stack = QStackedWidget()
 
         # criando as telas
-        self.calendario = CalendarioWidget(self, self.stack)
-        self.habbits = HabitsWindow(self, self.stack)
+        self.calendario = CalendarioWidget(self.stack)
+        self.habbits = HabitsWindow(self.stack)
 
         # Adiciona as páginas no stack
-        self.stack.addWidget(self.calendario)
-        self.stack.addWidget(self.habbits)
+        self.stack.addWidget(self.calendario)   # indice 0
+        self.stack.addWidget(self.habbits)      # indice 1
 
         # Inicia com o calendário
         self.stack.setCurrentIndex(0)
