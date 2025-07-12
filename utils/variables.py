@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 
-ROOT_DIR = Path(__file__).parent
+ROOT_DIR = Path(__file__).parent.parent
 FILES_DIR = ROOT_DIR / 'files'
 WINDOW_ICON_PATH = FILES_DIR / 'logo.png'
 BASE_DIR = BASE_DIR = Path(__file__).resolve().parent.parent
