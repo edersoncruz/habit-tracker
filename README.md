@@ -1,4 +1,4 @@
-# 🧠 Habbit Tracker
+# 🧠 Habit Tracker
 
 Um aplicativo simples para rastrear hábitos diários e ajudar no desenvolvimento pessoal por meio da consistência.
 
@@ -17,15 +17,15 @@ Um aplicativo simples para rastrear hábitos diários e ajudar no desenvolviment
 
 ## 📁 Estrutura do Projeto
  ```bash
-habbit-tracker/
+habit-tracker/
 │
 ├── files/                     # Pasta para arquivos adicionais (ex: logo, JSON de dados)
-│   ├── habbits.json           # Arquivo JSON para salvar os dados dos hábitos
+│   ├── habits.json           # Arquivo JSON para salvar os dados dos hábitos
 │   └── logo.png               # Logo do aplicativo
 │
 ├── telas/                     # Módulos das telas da aplicação
 │   ├── calendar.py            # Tela/calendário para seleção e visualização das datas
-│   └── habbits.py             # Tela para gerenciar hábitos
+│   └── habits.py             # Tela para gerenciar hábitos
 │
 ├── utils/                     # Utilitários e funções auxiliares
 │   ├── api_connection.py      # API para salvar e carregar dados
