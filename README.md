@@ -44,8 +44,8 @@ habit-tracker/
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/edersoncruz/habbit-tracker.git
-   cd habbit-tracker
+   git clone https://github.com/edersoncruz/habit-tracker.git
+   cd habit-tracker
    ```
 
 2. (Opcional) Crie um ambiente virtual:
