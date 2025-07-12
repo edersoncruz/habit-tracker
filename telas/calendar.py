@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import (
     QWidget, QCalendarWidget, QStackedWidget, QGridLayout)
 from PySide6.QtCore import QLocale, Qt
-from telas.habbits import HabitsWindow
+from telas.habits import HabitsWindow
 
 
 class CalendarioWidget(QWidget):
