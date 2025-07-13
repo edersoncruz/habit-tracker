@@ -109,6 +109,7 @@ class HabitsWindow(QWidget):
         if label and label not in self.habits_list:
             self.habits_list.append(label)
             self.save_habits_list()
+            self.save_habits_for_date()
             self.create_checkboxes()
             self.input_habit.clear()
 
@@ -116,6 +117,7 @@ class HabitsWindow(QWidget):
         if label in self.habits_list:
             self.habits_list.remove(label)
             self.save_habits_list()
+            self.save_habits_for_date()
             self.create_checkboxes()
 
     def save_habits_list(self):
