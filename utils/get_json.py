@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 from pathlib import Path
 
+
 # Criar dict com JSON
 JSON_PATH = Path('files') / 'habits.json'
 
@@ -19,8 +20,7 @@ data = load_json()
 data_formatted = {}
 
 if not data:
-    print("No data found in the JSON file.")
-    exit()
+    raise FileNotFoundError("No data found in the JSON file.")
 for key, _list in data.items():
     count = 0
     if key == "_habits_list":
