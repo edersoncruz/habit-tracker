@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QStackedWidget, QMainWindow, QWidget, QGridLayout
 from telas.calendar import CalendarioWidget
 from telas.habits import HabitsWindow
-
+from telas.grid import GridWindow
 
 class MainWindow(QMainWindow):
     def __init__(self, parent: QWidget | None = None, *args, **kwargs) -> None:
@@ -27,10 +27,12 @@ class MainWindow(QMainWindow):
         # criando as telas
         self.calendario = CalendarioWidget(self.stack)
         self.habbits = HabitsWindow(self.stack)
+        self.grid = GridWindow(self.stack)
 
         # Adiciona as páginas no stack
         self.stack.addWidget(self.calendario)   # indice 0
         self.stack.addWidget(self.habbits)      # indice 1
+        self.stack.addWidget(self.grid)      # indice 2
 
         # Inicia com o calendário
         self.stack.setCurrentIndex(0)
