@@ -27,12 +27,12 @@ habit-tracker/
 │
 ├── telas/                     # Módulos das telas da aplicação
 │   ├── calendar.py            # Tela/calendário para seleção e visualização das datas
-│   |── habits.py              # Tela para gerenciar hábitos
+│   ├── habits.py              # Tela para gerenciar hábitos
 │   └── grid.py                # Tela com gráfico de hábitos realizados por dia
-|
+│
 ├── utils/                     # Utilitários e funções auxiliares
 │   ├── api_connection.py      # API para salvar e carregar dados
-|   |── get_json.py            # Módulo para carregar dados de hábitos em JSON
+│   ├── get_json.py            # Módulo para carregar dados de hábitos em JSON
 │   └── variables.py           # Variáveis globais e configurações
 │
 ├── main.py                    # Arquivo principal que inicia a aplicação
