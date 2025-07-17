@@ -7,6 +7,7 @@ Um aplicativo simples para rastrear hábitos diários e ajudar no desenvolviment
 - ✅ Adicionar e remover hábitos
 - 📅 Marcar hábitos como concluídos por dia
 - 📊 Visualizar progresso diário/semanal
+- 📈 Gráfico de linha com evolução dos hábitos ao longo do tempo (usando Matplotlib)
 - 💾 Salvamento local dos dados via arquivo JSON
 - 🌐 Uso de API para salvar e gerenciar os dados
 
@@ -14,6 +15,7 @@ Um aplicativo simples para rastrear hábitos diários e ajudar no desenvolviment
 
 - Python 3
 - PySide6
+- Matplotlib (visualização de dados)
 
 ## 📁 Estrutura do Projeto
  ```bash
@@ -25,10 +27,12 @@ habit-tracker/
 │
 ├── telas/                     # Módulos das telas da aplicação
 │   ├── calendar.py            # Tela/calendário para seleção e visualização das datas
-│   └── habits.py              # Tela para gerenciar hábitos
-│
+│   |── habits.py              # Tela para gerenciar hábitos
+│   └── grid.py                # Tela com gráfico de hábitos realizados por dia
+|
 ├── utils/                     # Utilitários e funções auxiliares
 │   ├── api_connection.py      # API para salvar e carregar dados
+|   |── get_json.py            # Módulo para carregar dados de hábitos em JSON
 │   └── variables.py           # Variáveis globais e configurações
 │
 ├── main.py                    # Arquivo principal que inicia a aplicação
@@ -65,8 +69,10 @@ habit-tracker/
 
 ## 📸 Capturas de Tela
 
-<img width="350" height="300" alt="4" src="https://github.com/user-attachments/assets/192683e7-f1d9-4c3a-aecc-d13391e7ae3e" />
-<img width="350" height="298" alt="5" src="https://github.com/user-attachments/assets/efda62be-68f0-4d2c-8842-45ea624e614c" />
+<img width="450" height="300" alt="4" src="https://github.com/user-attachments/assets/192683e7-f1d9-4c3a-aecc-d13391e7ae3e" />
+<img width="450" height="298" alt="5" src="https://github.com/user-attachments/assets/efda62be-68f0-4d2c-8842-45ea624e614c" />
+<img width="900" height="498" alt="image" src="https://github.com/user-attachments/assets/569a147a-8ebb-44f6-ad65-8ae1b52c93e3" />
+
 
 
 
