@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QWidget, QGridLayout, QPushButton
 from PySide6.QtWidgets import QPushButton
 import matplotlib.pyplot as plt
-from utils.get_json import datas, values
+from utils.get_json import get_json_data
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -17,6 +17,7 @@ class GridWindow(QWidget):
         # Criação da figura do Matplotlib embutida
         self.figure = Figure(figsize=(7, 2.5))
         self.canvas = FigureCanvas(self.figure)
+        datas, values = get_json_data()
         self.plot_graph(datas, values)
 
         # Adiciona o gráfico à grid (linha 0, coluna 0, ocupando 1 linha e 2 colunas)
@@ -41,4 +42,11 @@ class GridWindow(QWidget):
 
     def back_initial_menu(self):
         self.stack.setCurrentIndex(0)
+
+    def refresh(self):
+        datas, values = get_json_data()
+        self.figure.clear()  # Limpa o gráfico antigo
+        self.plot_graph(datas, values)
+        self.canvas.draw()   # Redesenha no canvas
+
 

@@ -1,7 +1,6 @@
 from PySide6.QtWidgets import (
     QWidget, QCalendarWidget, QStackedWidget, QGridLayout, QPushButton)
 from PySide6.QtCore import QLocale, Qt
-from telas.habits import HabitsWindow
 
 
 class CalendarioWidget(QWidget):
@@ -46,4 +45,6 @@ class CalendarioWidget(QWidget):
         stack.setCurrentIndex(1)
 
     def open_grid_window(self):
-        self.stack.setCurrentIndex(2)
+        grid_window = self.stack.widget(2)  # índice 2 é a GridWindow
+        grid_window.refresh()               # chama o método que atualiza o gráfico
+        self.stack.setCurrentIndex(2)       # muda para a tela do gráfico
