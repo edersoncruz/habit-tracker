@@ -33,7 +33,7 @@ class GridWindow(QWidget):
     def plot_graph(self, datas, values):
         ax = self.figure.add_subplot(111)
         ax.plot(datas, values, marker='o', linestyle='-', color='blue')
-        ax.axhline(y=11, color='red', linestyle='--', label='Meta (11)')
+        # ax.axhline(y=12, color='red', linestyle='--', label='Meta (11)')
         ax.set_title("Hábitos ao longo do tempo")
         ax.set_xlabel("Data")
         ax.set_ylabel("Valor")
