@@ -1,6 +1,6 @@
 import os
 import json
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
 
 
@@ -31,7 +31,7 @@ def get_json_data():
             key_formatted = datetime.strptime(key, "%Y-%m-%d").date()
             data_hoje = datetime.now().date()
             
-            if key_formatted > data_hoje:
+            if key_formatted > data_hoje or (key_formatted < (data_hoje - timedelta(days=30))):
                 data_formatted.pop(key, None)
                 continue
             for value in _list.values():
