@@ -7,6 +7,7 @@ from PySide6.QtWidgets import (QWidget, QVBoxLayout, QLabel, QCheckBox,
 from PySide6.QtCore import Qt, QLocale
 from utils.api_connection import sent_api, load_api
 from utils.variables import HABITS_FILE
+from functools import partial
 
 locale = QLocale(QLocale.Portuguese, QLocale.Brazil)
 QLocale.setDefault(locale)
@@ -98,11 +99,13 @@ class HabitsWindow(QWidget):
             # Botão remover
             rm_btn = QPushButton("Remover")
             rm_btn.setFixedWidth(80)
-            rm_btn.clicked.connect(
-                lambda _, label=label: self.remove_habit(label))
+            rm_btn.clicked.connect(partial(self.remove_habit, label))
+
+
             self.grid.addWidget(rm_btn, row, col * 2 + 1)
         # Sempre recarrega o estado dos checkboxes para o dia atual
         self.load_habits_for_date()
+
 
     def add_habit(self):
         label = self.input_habit.text().strip()
