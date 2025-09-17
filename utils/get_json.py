@@ -16,7 +16,7 @@ def load_json():
         print(f"JSON file not found at {JSON_PATH}. Please ensure the file exists.")
         return None
 
-def get_json_data():
+def get_json_data(delta):
     data = load_json()
     data_formatted = {}
 
@@ -31,7 +31,7 @@ def get_json_data():
             key_formatted = datetime.strptime(key, "%Y-%m-%d").date()
             data_hoje = datetime.now().date()
             
-            if key_formatted > data_hoje or (key_formatted < (data_hoje - timedelta(days=30))):
+            if key_formatted > data_hoje or (key_formatted < (data_hoje - timedelta(days=delta))):
                 data_formatted.pop(key, None)
                 continue
             for value in _list.values():

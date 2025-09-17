@@ -19,7 +19,7 @@ class MainWindow(QMainWindow):
         # Titulo da janela e tamanho
         self.setWindowTitle('Habit Tracker')
         self.resize(300, 300)
-        self.move(500, 100)
+        self.move(600, 300)
 
         # Stack para alternar entre telas
         self.stack = QStackedWidget()

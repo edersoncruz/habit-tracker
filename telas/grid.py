@@ -17,7 +17,7 @@ class GridWindow(QWidget):
         # Criação da figura do Matplotlib embutida
         self.figure = Figure(figsize=(7, 2.5))
         self.canvas = FigureCanvas(self.figure)
-        datas, values = get_json_data()
+        datas, values = get_json_data(30)
         self.plot_graph(datas, values)
 
         # Adiciona o gráfico à grid (linha 0, coluna 0, ocupando 1 linha e 2 colunas)
@@ -32,9 +32,9 @@ class GridWindow(QWidget):
 
     def plot_graph(self, datas, values):
         ax = self.figure.add_subplot(111)
-        ax.plot(datas, values, marker='o', linestyle='-', color='blue')
+        ax.plot(datas, values, marker='.', linestyle='-', color='blue')
         # ax.axhline(y=12, color='red', linestyle='--', label='Meta (11)')
-        ax.set_title("Hábitos ao longo do tempo")
+        ax.set_title("Hábitos ao longo do tempo - Mês")
         ax.set_xlabel("Data")
         ax.set_ylabel("Valor")
         ax.grid(True)
@@ -46,7 +46,7 @@ class GridWindow(QWidget):
         self.stack.setCurrentIndex(0)
 
     def refresh(self):
-        datas, values = get_json_data()
+        datas, values = get_json_data(30)
         self.figure.clear()  # Limpa o gráfico antigo
         self.plot_graph(datas, values)
         self.canvas.draw()   # Redesenha no canvas

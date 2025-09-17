@@ -1,7 +1,8 @@
 from PySide6.QtWidgets import (
     QWidget, QCalendarWidget, QStackedWidget, QGridLayout, QPushButton)
 from PySide6.QtCore import QLocale, Qt
-
+import matplotlib.pyplot as plt
+from utils.get_json import get_json_data
 
 class CalendarioWidget(QWidget):
     def __init__(self, stack, parent=None):
@@ -28,12 +29,17 @@ class CalendarioWidget(QWidget):
         # Calendário em português
         self.calendar.setLocale(QLocale(QLocale.Portuguese, QLocale.Brazil))
 
-        # Botão para abrir relatórios
-        button_grid = QPushButton("Ver Relatórios")
+        # Botão para abrir relatórios mensal
+        button_grid = QPushButton("Gráfico Mensal")
         button_grid.clicked.connect(self.open_grid_window)
         self.v_layout.addWidget(button_grid)
         button_grid.setFixedHeight(30)
-
+        
+        # Botão para abrir gráfico geral
+        button_general_grid = QPushButton("Gráfico Anual")
+        button_general_grid.clicked.connect(self.open_grid_window_general)
+        self.v_layout.addWidget(button_general_grid)
+        button_general_grid.setFixedHeight(30)
 
         # Abrir nova tela ao clicar em um dia
         self.calendar.clicked.connect(
@@ -48,3 +54,18 @@ class CalendarioWidget(QWidget):
         grid_window = self.stack.widget(2)  # índice 2 é a GridWindow
         grid_window.refresh()               # chama o método que atualiza o gráfico
         self.stack.setCurrentIndex(2)       # muda para a tela do gráfico
+
+    def open_grid_window_general(self):
+        datas, values = get_json_data(360)
+        fig, ax1 = plt.subplots(figsize=(8, 4))  # apenas um gráfico
+
+        # Gráfico de linha
+        ax1.plot(datas, values, marker='.', linestyle='-', color='blue')
+        ax1.set_title("Hábitos ao longo do tempo - Ano")
+        ax1.set_xlabel("Data")
+        ax1.set_ylabel("Valor")
+        ax1.grid(True)
+        ax1.legend()
+        ax1.tick_params(axis='x', colors='white')  # cor dos ticks + labels do eixo X
+        plt.tight_layout()
+        plt.show()
