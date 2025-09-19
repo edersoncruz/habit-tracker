@@ -2,6 +2,7 @@ from PySide6.QtWidgets import (
     QWidget, QCalendarWidget, QStackedWidget, QGridLayout, QPushButton)
 from PySide6.QtCore import QLocale, Qt
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator
 from utils.get_json import get_json_data
 
 class CalendarioWidget(QWidget):
@@ -67,5 +68,6 @@ class CalendarioWidget(QWidget):
         ax1.grid(True)
         ax1.legend()
         ax1.tick_params(axis='x', colors='white')  # cor dos ticks + labels do eixo X
+        ax1.yaxis.set_major_locator(MultipleLocator(1))  # intervalo de 1 em 1
         plt.tight_layout()
         plt.show()

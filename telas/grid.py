@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from utils.get_json import get_json_data
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+from matplotlib.ticker import MultipleLocator
 
 class GridWindow(QWidget):
     def __init__(self, stack, parent=None):
@@ -38,8 +39,9 @@ class GridWindow(QWidget):
         ax.set_xlabel("Data")
         ax.set_ylabel("Valor")
         ax.grid(True)
-        ax.tick_params(axis='x', rotation=90)
+        ax.tick_params(axis='x', rotation=80)
         ax.set_ylim(bottom=0)
+        ax.yaxis.set_major_locator(MultipleLocator(2))  # intervalo de 1 em 1
         self.figure.tight_layout()
 
     def back_initial_menu(self):
