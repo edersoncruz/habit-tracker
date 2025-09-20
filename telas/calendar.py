@@ -22,7 +22,7 @@ class CalendarioWidget(QWidget):
         self.calendar.setSelectedDate(self.calendar.selectedDate())
         self.calendar.setStyleSheet(
             "QCalendarWidget { background-color: #f0f0f0; }")
-        self.v_layout.addWidget(self.calendar, 0, 0, 1, 1)
+        self.v_layout.addWidget(self.calendar, 0, 0, 1, 2)
         self.calendar.setFocusPolicy(Qt.StrongFocus)
         self.calendar.setFocus()
         self.calendar.installEventFilter(self)
@@ -33,13 +33,13 @@ class CalendarioWidget(QWidget):
         # Botão para abrir relatórios mensal
         button_grid = QPushButton("Gráfico Mensal")
         button_grid.clicked.connect(self.open_grid_window)
-        self.v_layout.addWidget(button_grid)
+        self.v_layout.addWidget(button_grid, 1, 0, 1, 1)
         button_grid.setFixedHeight(30)
         
         # Botão para abrir gráfico geral
         button_general_grid = QPushButton("Gráfico Anual")
         button_general_grid.clicked.connect(self.open_grid_window_general)
-        self.v_layout.addWidget(button_general_grid)
+        self.v_layout.addWidget(button_general_grid , 1, 1, 1, 1)
         button_general_grid.setFixedHeight(30)
 
         # Abrir nova tela ao clicar em um dia

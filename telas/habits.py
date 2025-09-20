@@ -49,7 +49,7 @@ class HabitsWindow(QWidget):
         self.habbits.addStretch()
 
         # Botão para voltar ao calendário
-        button = QPushButton("Voltar ao Calendário")
+        button = QPushButton("Voltar")
         button.clicked.connect(self.on_back_to_calendar)
         self.habbits.addWidget(button)
         button.setFixedHeight(30)

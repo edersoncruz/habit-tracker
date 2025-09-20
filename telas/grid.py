@@ -25,7 +25,7 @@ class GridWindow(QWidget):
         self.grid_layout.addWidget(self.canvas, 0, 0, 1, 2)
 
         # Botão para voltar ao menu inicial
-        button_back = QPushButton("Voltar ao menu Inicial")
+        button_back = QPushButton("Voltar")
         button_back.clicked.connect(self.back_initial_menu)
         self.grid_layout.addWidget(button_back, 1, 0, 1, 2)  # abaixo do gráfico
         button_back.setFixedHeight(30)
