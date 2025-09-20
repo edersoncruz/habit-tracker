@@ -32,6 +32,9 @@ class GridWindow(QWidget):
         self.setWindowTitle("Tela em Grade")
 
     def plot_graph(self, datas, values):
+        for d in datas:
+            so_dia_mes = "-".join(d.split("-")[1:])  # pega só mês e dia
+            datas[datas.index(d)] = so_dia_mes
         ax = self.figure.add_subplot(111)
         ax.plot(datas, values, marker='.', linestyle='-', color='blue')
         # ax.axhline(y=12, color='red', linestyle='--', label='Meta (11)')
