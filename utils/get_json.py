@@ -16,6 +16,13 @@ def load_json():
         print(f"JSON file not found at {JSON_PATH}. Please ensure the file exists.")
         return None
 
+# Tenho que pegar uma lista com todos os indices do dic
+# Criar uma nova lista iniciando ela pela data mais antiga da minha lista de dic que já tenho
+# Crio uma variável data atual
+# Faço um for e dessa data mais antiga até a data atual eu adicono um indice com a data aumentando de 1 em 1 dia.
+# Para caso eu pule algum dia quando entrar no gráfico ele conte aquele dia zerado.
+# Depois disso vou ter que criar a estrutura toda de habitos tudo como false
+
 def get_json_data(delta):
     data = load_json()
     data_formatted = {}
