@@ -68,10 +68,11 @@ habit-tracker/
    ```
 
 ## 📸 Capturas de Tela
+<img width="531" height="417" alt="image" src="https://github.com/user-attachments/assets/b04204f6-5e8e-484b-9f74-5e0010accf7b" />
+<img width="531" height="417" alt="5" src="https://github.com/user-attachments/assets/efda62be-68f0-4d2c-8842-45ea624e614c" />
+<img width="528" height="418" alt="image" src="https://github.com/user-attachments/assets/bb7ffa3d-42f5-4a62-b3bb-e302dda2d688" />
+<img width="798" height="469" alt="image" src="https://github.com/user-attachments/assets/8d92779f-054f-43f1-be19-3238fd94bac6" />
 
-<img width="450" height="300" alt="4" src="https://github.com/user-attachments/assets/192683e7-f1d9-4c3a-aecc-d13391e7ae3e" />
-<img width="450" height="298" alt="5" src="https://github.com/user-attachments/assets/efda62be-68f0-4d2c-8842-45ea624e614c" />
-<img width="900" height="498" alt="image" src="https://github.com/user-attachments/assets/569a147a-8ebb-44f6-ad65-8ae1b52c93e3" />
 
 
 
