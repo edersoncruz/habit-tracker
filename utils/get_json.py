@@ -26,7 +26,7 @@ def load_json():
 def get_json_data(delta):
     data = load_json()
     data_formatted = {}
-
+    data = ensure_all_dates(data)
     if not data:
         raise FileNotFoundError("No data found in the JSON file.")
     for key, _list in data.items():
@@ -52,3 +52,29 @@ def get_json_data(delta):
     values = list(ordened_data.values())
 
     return datas, values
+
+
+def ensure_all_dates(data):
+    if not data:
+        return data
+
+    date_format = "%Y-%m-%d"
+    all_dates = set()
+
+    # Obter a data mais antiga do JSON
+    min_date_str = min(key for key in data.keys() if key != "_habits_list")
+    min_date = datetime.strptime(min_date_str, date_format).date()
+    max_date = datetime.now().date()
+
+    # Gerar todas as datas entre a data mais antiga e a data atual
+    current_date = min_date
+    while current_date <= max_date:
+        all_dates.add(current_date.strftime(date_format))
+        current_date += timedelta(days=1)
+
+    # Adicionar datas faltantes ao dicionário com valores padrão
+    for date_str in all_dates:
+        if date_str not in data:
+            data[date_str] = {habit: False for habit in data.get("_habits_list", [])}
+
+    return data
