@@ -76,7 +76,7 @@ class CalendarioWidget(QWidget):
         ax1.grid(True, color="#444444")
 
         # Ticks brancos
-        ax1.tick_params(axis='x', colors='white')
+        ax1.tick_params(axis='x', colors='#1e1e1e')
         ax1.tick_params(axis='y', colors='white')
 
         # Intervalo Y
