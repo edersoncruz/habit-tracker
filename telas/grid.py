@@ -32,20 +32,38 @@ class GridWindow(QWidget):
         self.setWindowTitle("Tela em Grade")
 
     def plot_graph(self, datas, values):
+        # Ajusta datas para mostrar só mês-dia
         for d in datas:
-            so_dia_mes = "-".join(d.split("-")[1:])  # pega só mês e dia
+            so_dia_mes = "-".join(d.split("-")[1:])
             datas[datas.index(d)] = so_dia_mes
+
         ax = self.figure.add_subplot(111)
-        ax.plot(datas, values, marker='.', linestyle='-', color='blue')
-        # ax.axhline(y=12, color='red', linestyle='--', label='Meta (11)')
-        ax.set_title("Hábitos ao longo do tempo - Mês")
-        ax.set_xlabel("Data")
-        ax.set_ylabel("Valor")
-        ax.grid(True)
-        ax.tick_params(axis='x', rotation=80)
+
+        # Fundo escuro
+        self.figure.patch.set_facecolor("#1e1e1e")
+        ax.set_facecolor("#1e1e1e")
+
+        # Linha principal
+        ax.plot(datas, values, marker='.', linestyle='-', color='white')
+
+        # Grid claro sobre fundo escuro
+        ax.grid(True, color="#444444")
+
+        # Títulos e rótulos em branco
+        ax.set_title("Hábitos ao longo do tempo - Mês", color="white")
+        ax.set_xlabel("Data", color="white")
+        ax.set_ylabel("Valor", color="white")
+
+        # Estilo dos ticks
+        ax.tick_params(axis='x', rotation=80, colors="white")
+        ax.tick_params(axis='y', colors="white")
+
+        # Limites
         ax.set_ylim(bottom=0)
-        ax.yaxis.set_major_locator(MultipleLocator(2))  # intervalo de 1 em 1
+        ax.yaxis.set_major_locator(MultipleLocator(2))
+
         self.figure.tight_layout()
+
 
     def back_initial_menu(self):
         self.stack.setCurrentIndex(0)

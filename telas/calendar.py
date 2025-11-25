@@ -61,13 +61,34 @@ class CalendarioWidget(QWidget):
         fig, ax1 = plt.subplots(figsize=(8, 4))  # apenas um gráfico
 
         # Gráfico de linha
-        ax1.plot(datas, values, marker='.', linestyle='-', color='blue')
-        ax1.set_title("Hábitos ao longo do tempo - Ano")
-        ax1.set_xlabel("Data")
-        ax1.set_ylabel("Valor")
-        ax1.grid(True)
-        ax1.legend()
-        ax1.tick_params(axis='x', colors='white')  # cor dos ticks + labels do eixo X
-        ax1.yaxis.set_major_locator(MultipleLocator(1))  # intervalo de 1 em 1
+        ax1.plot(datas, values, marker='.', linestyle='-', color='white')
+
+        # Fundo escuro
+        ax1.set_facecolor("#1e1e1e")
+        ax1.figure.patch.set_facecolor("#1e1e1e")
+
+        # Título e rótulos
+        ax1.set_title("Hábitos ao longo do tempo - Ano", color="white")
+        ax1.set_xlabel("Data", color="white")
+        ax1.set_ylabel("Valor", color="white")
+
+        # Grid claro
+        ax1.grid(True, color="#444444")
+
+        # Ticks brancos
+        ax1.tick_params(axis='x', colors='white')
+        ax1.tick_params(axis='y', colors='white')
+
+        # Intervalo Y
+        ax1.yaxis.set_major_locator(MultipleLocator(1))
+
+        # Legenda com fundo escuro
+        leg = ax1.legend()
+        if leg:
+            for text in leg.get_texts():
+                text.set_color("white")
+            leg.get_frame().set_facecolor("#1e1e1e")
+            leg.get_frame().set_edgecolor("#444444")
+
         plt.tight_layout()
         plt.show()
